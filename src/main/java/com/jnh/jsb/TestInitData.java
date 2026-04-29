@@ -1,6 +1,8 @@
 package com.jnh.jsb;
 
 
+import com.jnh.jsb.question.Question;
+import com.jnh.jsb.question.QuestionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,9 @@ public class TestInitData {
         q2.setSubject("스프링부트 모델 질문입니다.");
         q2.setContent("id는 자동으로 생성되나요?");
         q2.setCreateDate(LocalDateTime.now());
+
+        q2.addAnswer("네 자동으로 생성됩니다.");
+
         this.questionRepository.save(q2);  // 두번째 질문 저장
     }
 }

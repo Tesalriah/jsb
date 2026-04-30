@@ -4,7 +4,7 @@ import com.jnh.jsb.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,5 +25,14 @@ public class QuestionService {
         }else {
             throw new DataNotFoundException("question not found");
         }
+    }
+
+    public Question create(String subject, String content) {
+        Question question = new Question();
+        question.setSubject(subject);
+        question.setContent(content);
+        question.setCreateDate(LocalDateTime.now());
+
+        return questionRepository.save(question);
     }
 }
